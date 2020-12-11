@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - sceneChanger
+  - rightSceneChanger
+  - leftSceneChanger
+  - ScreenJoin
   layers:
   - Default
   - TransparentFX

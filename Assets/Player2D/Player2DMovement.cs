@@ -16,10 +16,25 @@ public class Player2DMovement : MonoBehaviour
     public float groundCheckLenght;
     public Transform groundCheckPoint;
 
+  
+    public float gravity = -17f;
+
 
     private void Update()
     {
+        
         MovePlayer();
+
+    }
+    private void FixedUpdate()
+    {
+        ApplyGravity();
+    }
+
+
+    private void ApplyGravity()
+    {
+        rb.AddForce(transform.up * gravity, ForceMode2D.Force);
     }
 
     private void MovePlayer()
@@ -64,6 +79,18 @@ public class Player2DMovement : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "rightSceneChanger")
+        {
+            Scene2DManager.instance.ChangeScene(1);
+        }
+        if (collision.tag == "leftSceneChanger")
+        {
+            Scene2DManager.instance.ChangeScene(-1);
+        }
+    }
     public void Jump(float bounceForce)
     {
      
