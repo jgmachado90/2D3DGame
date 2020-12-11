@@ -106,7 +106,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 256
-  groundCheckLenght: 0.2
+  groundCheckLenght: 0.02
   groundCheckPoint: {fileID: 3790671366824793896}
   gravity: -17
 --- !u!61 &3790671366221522468
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3790671366221522489}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 511d1e16cad600a45b7147356ea6119a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
