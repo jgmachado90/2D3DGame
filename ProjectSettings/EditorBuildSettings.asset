@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CubeTests.unity
+    guid: 0bd6ce5f8ccf4b64ea00e851703497f8
   m_configObjects: {}
