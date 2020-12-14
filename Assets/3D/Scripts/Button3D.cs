@@ -19,21 +19,30 @@ public class Button3D : ActionObject {
         if (is2D && (other.gameObject.CompareTag("Box") || other.gameObject.name == "2DPlayer")){
             pressedThisFrame = true;
         }
-        else if (other.gameObject.CompareTag("PlayerFoot") || other.gameObject.CompareTag("Box")){
+        else if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box")){
             pressedThisFrame = true;
         }
+    }
+
+    public void OnActivate() {
+        onActive?.Invoke();
+
+    }
+
+    public void OnDisactivate() {
+        onDisactive?.Invoke();
     }
 
     private void FixedUpdate() {
         if (pressedThisFrame != pressed){
             if (pressedThisFrame){
-                animator.SetTrigger("Pressed");  
-                onActive?.Invoke();  
+                animator.SetTrigger("Press");
+                Invoke("OnActivate", 0.2f);
             }
 
             else {
-                onDisactive?.Invoke();
-                animator.SetTrigger("Unpressed");
+                animator.SetTrigger("Unpress");
+                Invoke("OnDisactivate", 0.2f);
             }
         }
         
