@@ -16,6 +16,7 @@ public class Scene2DManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOn();
       
     }
 
@@ -23,7 +24,8 @@ public class Scene2DManager : MonoBehaviour
     {
       
         currentSceneActive.myScreen2D.gameObject.SetActive(false);
-        currentSceneActive.myScreen3D.gameObject.SetActive(false);
+        currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOff();
+
         if (direction > 0)
         {
             foreach(Transform child in currentSceneActive.transform)
@@ -47,6 +49,7 @@ public class Scene2DManager : MonoBehaviour
 
         currentSceneActive.myScreen2D.gameObject.SetActive(true);
         currentSceneActive.myScreen3D.gameObject.SetActive(true);
+        currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOn();
 
 
         if (direction > 0) {

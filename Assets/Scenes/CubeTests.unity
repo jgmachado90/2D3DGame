@@ -502,6 +502,11 @@ PrefabInstance:
       propertyPath: myScreen2D
       value: 
       objectReference: {fileID: 1374680841}
+    - target: {fileID: 8314475814264871186, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
 --- !u!1001 &887738845
@@ -894,6 +899,11 @@ PrefabInstance:
     - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6714067642769252898, guid: 80e0d0029641f114e81b54cd2868d75b,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
