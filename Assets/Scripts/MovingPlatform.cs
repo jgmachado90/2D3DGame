@@ -64,7 +64,11 @@ public class MovingPlatform : MonoBehaviour {
             targetID = 0;
             looped = false;
             reachTarget = false;
-            startTarget = transform.position;
+            startTarget = targetPosition[1];
+            if (timer > 0) {
+                timer = startDuration - timer;
+            }
+
         }
         else if (movingPlatformType == MovingPlatformType.stopWithAction){
             reachTarget = true;
@@ -75,7 +79,9 @@ public class MovingPlatform : MonoBehaviour {
         if (movingPlatformType == MovingPlatformType.moveWithAction) { 
             duration = startDuration;
             startTarget = targetPosition[0];
-            timer = startDuration - timer;
+            if (timer > 0) {
+                timer = startDuration - timer;
+            }
             targetID = 1;
             looped = false;
             reachTarget = false;
@@ -101,7 +107,6 @@ public class MovingPlatform : MonoBehaviour {
     }
 
     private void Update() {
-
         if (onWaitTimer) {
             timer += Time.deltaTime;
             if (timer >= waitTimer) {
