@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public sealed class PlayerMovement : MonoBehaviour
 {
     //References--------------------------
     public CharacterController controller;    
@@ -13,34 +13,43 @@ public class PlayerMovement : MonoBehaviour
     //GroundCheckReferences
     public Transform groundCheck;
     public float groundDistance;
-    public LayerMask groundMask;
+    public LayerMask groundMask, platformMask;
     
    //-------------------------------------
 
     Vector3 _velocity;
-    bool _isGrounded;
+    bool _isGrounded, _isOnPlatform;
 
     //This will be removed soon
     public float gravity = -9.81f;
-
-
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         GroundCheck();
+        PlatformCheck();
         PlayerMove();
 
-        if(Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Jump();
+        }
 
+    }
+
+    private void FixedUpdate() {
+        _velocity = Vector3.Lerp(_velocity, Vector3.zero, Time.deltaTime * 2);
         ApplyGravity();
+    }
+
+    void Jump() {
+        if (_isGrounded) {
+            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        if (_isOnPlatform) {
+            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            Vector3 dir = GetComponentInParent<MovingPlatform>().MovedSinceLastFrame;
+            _velocity -= dir * 50;
+        }
     }
 
     private void ApplyGravity()
@@ -49,11 +58,30 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(_velocity * Time.deltaTime);
     }
 
+    private void PlatformCheck() {
+        if (Physics.Raycast(groundCheck.position, Vector3.down, out RaycastHit raycastHit, 0.1f, platformMask)) {
+            _isOnPlatform = true;
+            if (raycastHit.transform != null) { 
+                transform.SetParent(raycastHit.transform);
+            }
+        }
+        else {
+            if (_isOnPlatform) { 
+                transform.SetParent(null);
+                _isOnPlatform = false;
+            }
+        }
+
+    }
+
     private void GroundCheck()
     {
         _isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (_isGrounded && _velocity.y < 0)
-        {
+        Fall();
+    }
+
+    void Fall() {
+        if ((_isGrounded || _isOnPlatform) && _velocity.y < 0) {
             _velocity.y = -2f;
         }
     }

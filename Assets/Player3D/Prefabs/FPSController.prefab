@@ -66,12 +66,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4602389290047379991}
   speed: 5
-  jumpHeight: 2
+  jumpHeight: 3
   groundCheck: {fileID: 4602389290525365884}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 0
   gravity: -50
 --- !u!1 &4602389290356373088
 GameObject:
@@ -100,8 +103,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4602389290356373088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.014, y: 0.855, z: -0.21}
+  m_LocalRotation: {x: 0.054663, y: 0, z: 0, w: 0.9985049}
+  m_LocalPosition: {x: -0.01, y: 1.72, z: -0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4602389290047379990}

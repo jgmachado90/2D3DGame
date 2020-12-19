@@ -37,12 +37,12 @@ public class Button3D : ActionObject {
         if (pressedThisFrame != pressed){
             if (pressedThisFrame){
                 animator.SetTrigger("Press");
-                Invoke("OnActivate", 0.2f);
+                Invoke(nameof(OnActivate), 0.2f);
             }
 
             else {
                 animator.SetTrigger("Unpress");
-                Invoke("OnDisactivate", 0.2f);
+                Invoke(nameof(OnDisactivate), 0.2f);
             }
         }
         
