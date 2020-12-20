@@ -74,7 +74,7 @@ MonoBehaviour:
     m_Bits: 256
   platformMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   gravity: -50
 --- !u!1 &4602389290356373088
 GameObject:

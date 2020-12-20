@@ -70,7 +70,16 @@ public class MovingPlatform : MonoBehaviour {
 
     }
 
-    public Vector3 MovedSinceLastFrame => lastPosition - transform.position;
+    public Vector3 MovedSinceLastFrame {
+        get {
+            if (lastPosition == Vector3.zero) {
+                return Vector3.zero;
+            }
+            return lastPosition - transform.position;
+        }
+        
+    }
+    
         
     private void FixedUpdate() {
 
