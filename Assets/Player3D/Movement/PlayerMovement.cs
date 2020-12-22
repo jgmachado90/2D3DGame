@@ -7,7 +7,8 @@ public sealed class PlayerMovement : MonoBehaviour
     //References--------------------------
     public CharacterController controller;    
 
-    public float speed = 12f;
+    public float speed = 5;
+    public float sprintSpeed = 1.5f;
     public float jumpHeight = 3f;
 
     //GroundCheckReferences
@@ -90,7 +91,7 @@ public sealed class PlayerMovement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = (transform.right * x + transform.forward * z) * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : 1);
         controller.Move(move * speed * Time.deltaTime);
     }
 }
