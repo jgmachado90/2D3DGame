@@ -492,6 +492,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5453417888146085350, guid: 80e0d0029641f114e81b54cd2868d75b,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 1057505203830842237}
     - target: {fileID: 6333697727063457416, guid: 80e0d0029641f114e81b54cd2868d75b,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -502,6 +507,12 @@ PrefabInstance:
 --- !u!4 &8178525613189460815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4064796115684410595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1057505203830842237 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3946294457824389022, guid: 80e0d0029641f114e81b54cd2868d75b,
     type: 3}
   m_PrefabInstance: {fileID: 4064796115684410595}
   m_PrefabAsset: {fileID: 0}

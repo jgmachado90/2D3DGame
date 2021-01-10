@@ -21,19 +21,7 @@ public class Screen2DJoin : MonoBehaviour
         if (currentJoinScreen)
         {
             var interacting = IsIntersecting(transform, other.transform);
-            Debug.Log("interacting = " + interacting);
-
-            //var dotTransformOther = Vector3.Dot(transform.forward, other.transform.forward);
-            //var dotTransformCurrent = Vector3.Dot(transform.forward, currentJoinScreen.forward);
-
-            //Debug.Log(other.gameObject + "TransformWithOther = " + dotTransformOther);
-            // Debug.Log(currentJoinScreen.gameObject + "TransformCurrent = " + dotTransformCurrent);
-
-            //if (dotTransformOther > dotTransformCurrent)
-            // {
-
-            //   UpdateCurrentJoinScreen(other);
-            //}
+            //Debug.Log("INTERACTING = " + interacting, gameObject);
             if (interacting)
             {
                 UpdateCurrentJoinScreen(other);
@@ -41,14 +29,16 @@ public class Screen2DJoin : MonoBehaviour
         }
         else
         {
+            //Debug.Log("First" + other, gameObject);
             UpdateCurrentJoinScreen(other);
         }
     }
 
     private void UpdateCurrentJoinScreen(Collider other)
     {
+        //Debug.Log("Update de tela = " + other, gameObject);
         Screen2DJoin otherScreen = other.GetComponent<Screen2DJoin>();
-        otherScreen.currentJoinScreen = transform;
+        //otherScreen.currentJoinScreen = transform;
         currentJoinScreen = otherScreen.transform;
     }
 

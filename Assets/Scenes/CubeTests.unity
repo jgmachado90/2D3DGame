@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 33.86
   m_LinearFogEnd: 132.1
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
-  m_AmbientEquatorColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
-  m_AmbientGroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+  m_AmbientSkyColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_AmbientEquatorColor: {r: 0.72463506, g: 0.8679245, b: 0.7607764, a: 1}
+  m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -345,6 +345,18 @@ PrefabInstance:
       objectReference: {fileID: 1374680841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
+--- !u!4 &243244261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 965667754749217389, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1025378770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &283900370 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6944582342887924306, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1812592809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &446855381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8748036005584836010, guid: 273c3fb95c5e44d45bb952871c84d14f,
@@ -510,6 +522,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8748036005511718790, guid: 273c3fb95c5e44d45bb952871c84d14f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8748036005706820742, guid: 273c3fb95c5e44d45bb952871c84d14f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,6 +589,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 273c3fb95c5e44d45bb952871c84d14f, type: 3}
+--- !u!4 &669592834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 965667754749217389, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 755385791}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &725801754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +747,16 @@ PrefabInstance:
       propertyPath: myScreen2D
       value: 
       objectReference: {fileID: 1677557637}
+    - target: {fileID: 8504016105250253423, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189543076874312096, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 1779865930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
 --- !u!1001 &799644775
@@ -1101,8 +1134,24 @@ PrefabInstance:
       propertyPath: myScreen2D
       value: 
       objectReference: {fileID: 1374680841}
+    - target: {fileID: 8504016105250253423, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 669592834}
+    - target: {fileID: 9189543076874312096, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 1220064870}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
+--- !u!4 &1220064870 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6944582342887924306, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1887009988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1251144780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,6 +1305,12 @@ PrefabInstance:
       objectReference: {fileID: 1374680841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
+--- !u!4 &1338004825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 965667754749217389, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1887009988}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1374680841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7909703881899885225, guid: 273c3fb95c5e44d45bb952871c84d14f,
@@ -1591,6 +1646,12 @@ PrefabInstance:
       objectReference: {fileID: 1374680841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
+--- !u!4 &1779865930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6944582342887924306, guid: 5f010006a42346043a4602767a8427e4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1025378770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1812592809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1663,6 +1724,11 @@ PrefabInstance:
       propertyPath: myScreen2D
       value: 
       objectReference: {fileID: 1374680841}
+    - target: {fileID: 8504016105250253423, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 1338004825}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
 --- !u!1001 &1828711231
@@ -1890,6 +1956,16 @@ PrefabInstance:
       propertyPath: myScreen2D
       value: 
       objectReference: {fileID: 1374680841}
+    - target: {fileID: 8504016105250253423, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 243244261}
+    - target: {fileID: 9189543076874312096, guid: 5f010006a42346043a4602767a8427e4,
+        type: 3}
+      propertyPath: naturalJoinScreen
+      value: 
+      objectReference: {fileID: 283900370}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f010006a42346043a4602767a8427e4, type: 3}
 --- !u!1001 &1955345380
