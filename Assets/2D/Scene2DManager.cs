@@ -22,19 +22,16 @@ public class Scene2DManager : MonoBehaviour
 
     public void ChangeScene(int direction)
     {
-      
-        currentSceneActive.myScreen2D.gameObject.SetActive(false);
-        currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOff();
-
         if (direction > 0)
         {
-            foreach(Transform child in currentSceneActive.transform)
+            foreach (Transform child in currentSceneActive.transform)
             {
-                if(child.name == "RightJoin")
+                if (child.name == "RightJoin")
                 {
-                    currentSceneActive = child.GetComponentInChildren<Screen2DJoin>().currentJoinScreen.GetComponentInParent<Screen2D>();
+                    ExchangeScenes(child);
                 }
             }
+            player.transform.position = new Vector3(spawnPositionLeft.position.x, player.position.y, player.position.z);
         }
         if (direction < 0)
         {
@@ -42,24 +39,34 @@ public class Scene2DManager : MonoBehaviour
             {
                 if (child.name == "LeftJoin")
                 {
-                    currentSceneActive = child.GetComponentInChildren<Screen2DJoin>().currentJoinScreen.GetComponentInParent<Screen2D>();
+                    ExchangeScenes(child);
                 }
             }
+            player.transform.position = new Vector3(spawnPositionRight.position.x, player.position.y, player.position.z);
         }
+    }
 
+    private void ExchangeScenes(Transform child)
+    {
+        if (child.GetComponent<Screen2DJoin>().currentJoinScreen != null)
+        {
+            DisableCurrentScene();
+            currentSceneActive = child.GetComponentInChildren<Screen2DJoin>().currentJoinScreen.GetComponentInParent<Screen2D>();
+            EnableCurrentScene();
+        }
+    }
+
+    private void EnableCurrentScene()
+    {
         currentSceneActive.myScreen2D.gameObject.SetActive(true);
         currentSceneActive.myScreen3D.gameObject.SetActive(true);
         currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOn();
+    }
 
-
-        if (direction > 0) {
-            player.transform.position = new Vector3(spawnPositionLeft.position.x, player.position.y, player.position.z);
-        }
-        else
-        {
-            player.transform.position = new Vector3(spawnPositionRight.position.x, player.position.y, player.position.z);
-        }
-
+    private void DisableCurrentScene()
+    {
+        currentSceneActive.myScreen2D.gameObject.SetActive(false);
+        currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOff();
     }
 
 
