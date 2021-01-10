@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 372703898}
-  duration: 1
-  waitTimer: 0
+  duration: 3
+  waitTimer: 1.01
   activeObject: {fileID: 0}
   movingPlatformType: 1
 --- !u!1 &4824898832206360461
@@ -439,6 +439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.95
       objectReference: {fileID: 0}
@@ -454,6 +459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.7071068
       objectReference: {fileID: 0}
@@ -466,16 +476,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5266673003325208492, guid: 80e0d0029641f114e81b54cd2868d75b,
         type: 3}
