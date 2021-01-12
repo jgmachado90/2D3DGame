@@ -42,12 +42,10 @@ public class Screen2DJoin : MonoBehaviour
 
     bool IsIntersecting(Transform self, Transform other)
     {
-
         Transform L1_start = self;
         Vector3 L1_end = self.forward * 90;
         Transform L2_start = other;
         Vector3 L2_end = other.forward * 90;
-
 
         bool isIntersecting = false;
 

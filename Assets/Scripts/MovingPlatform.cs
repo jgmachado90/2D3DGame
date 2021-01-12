@@ -92,17 +92,21 @@ public class MovingPlatform : MonoBehaviour {
 
         t = Mathf.Clamp(t, 0, 1);
 
-        Debug.Log("t: " + t);
+        //Debug.Log("t: " + t);
 
-        if (t == 1 && movingPlatformType == MovingPlatformType.moveWithAction && state == PlatformState.moving) {
+        if (t >= 0.98f && movingPlatformType == MovingPlatformType.moveWithAction && state == PlatformState.moving) {
+            Debug.Log("chegou no limite");
+            t = 1;
             return;
         }
+        Debug.Log("nao chegou no limite");
 
         if (t != 1 && t != 0 && state != PlatformState.returning) {
             state = PlatformState.moving;
         }
-        if (t == 0 && state == PlatformState.returning) {
+        if (t <= 0.02 && state == PlatformState.returning) {
             state = PlatformState.stopped;
+            t = 0;
         }
         lastPosition = transform.position;
         transform.position = Vector3.Lerp(targetPosition[1], targetPosition[0], t);

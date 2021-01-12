@@ -8,6 +8,8 @@ TagManager:
   - rightSceneChanger
   - leftSceneChanger
   - ScreenJoin
+  - 2DPlayer
+  - 2DBox
   layers:
   - Default
   - TransparentFX
