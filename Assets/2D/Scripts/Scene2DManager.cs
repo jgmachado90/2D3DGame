@@ -10,6 +10,7 @@ public class Scene2DManager : MonoBehaviour
     public Transform spawnPositionRight;
     public Transform player;
 
+    public Player2DMovement playerController;
     public Screen2D currentSceneActive;
 
     // Start is called before the first frame update
@@ -56,17 +57,19 @@ public class Scene2DManager : MonoBehaviour
         }
     }
 
-    private void EnableCurrentScene()
+    public void EnableCurrentScene()
     {
         currentSceneActive.myScreen2D.gameObject.SetActive(true);
         currentSceneActive.myScreen3D.gameObject.SetActive(true);
         currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOn();
+        playerController.gameObject.SetActive(true);
     }
 
-    private void DisableCurrentScene()
+    public void DisableCurrentScene()
     {
         currentSceneActive.myScreen2D.gameObject.SetActive(false);
         currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOff();
+        playerController.gameObject.SetActive(false);
     }
 
 
