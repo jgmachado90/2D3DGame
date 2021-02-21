@@ -48,7 +48,7 @@ public class MovingPlatform : MonoBehaviour {
     }
 
     public void OnActiveMovingPlatform() {
-
+        Debug.Log("OnActivateMovingPlatform");
         if (movingPlatformType == MovingPlatformType.moveWithAction) {
             state = PlatformState.moving;
             signal = 1;
@@ -59,6 +59,7 @@ public class MovingPlatform : MonoBehaviour {
     }
 
     public void OnDisactiveMovingPlatform() {
+        Debug.Log("OnDisactivateMovingPlatform");
         if (movingPlatformType == MovingPlatformType.moveWithAction) {
 
             state = PlatformState.returning;

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260873587}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -1.3969116, y: 1.71, z: 2.8308086}
+  m_LocalPosition: {x: -1.3969116, y: 2.33, z: 2.8308086}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_Children: []
   m_Father: {fileID: 8593826915054476252}
@@ -69,7 +69,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8593826915054476252}
-  - component: {fileID: 436298087}
+  - component: {fileID: 1416357115}
+  - component: {fileID: 1416357114}
   m_Layer: 0
   m_Name: Door3D
   m_TagString: Untagged
@@ -96,7 +97,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &436298087
+--- !u!65 &1416357115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3202496307736543774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8051996, y: 4.0047665, z: 0.8250502}
+  m_Center: {x: -1.3777456, y: -0.06442547, z: 1.6620429}
+--- !u!114 &1416357114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,19 +119,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3202496307736543774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf464373dbf7ca45ac172bd2225e40b, type: 3}
+  m_Script: {fileID: 11500000, guid: d343c9785c1a4db48997b885074c1af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftDoor: {fileID: 5486063089680430999}
-  rightDoor: {fileID: 7468245437746930479}
-  leftDoorTarget: {fileID: 0}
-  rightDoorTarget: {fileID: 0}
-  leftDoorClosedPosition: {x: 0, y: 0, z: 0}
-  rightDoorClosedPosition: {x: 0, y: 0, z: 0}
-  leftDoorOpenedPosition: {fileID: 475358865}
-  rightDoorOpenedPosition: {fileID: 260873588}
-  willMove: 0
-  openSpeed: 1
+  leftDoor: {fileID: 1022053480}
+  rightDoor: {fileID: 202713320}
+  passingThroughHappened: 0
+  hasPassingThroughEvent: 1
+  willCloseWhenPassThrough: 1
 --- !u!1 &5488704983631748613
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +139,7 @@ GameObject:
   - component: {fileID: 5501958246194720263}
   - component: {fileID: 5510204873400831791}
   - component: {fileID: 5534556317968713833}
+  - component: {fileID: 1022053480}
   m_Layer: 0
   m_Name: Door_Left_001
   m_TagString: Untagged
@@ -213,6 +223,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300084, guid: fe8bb5221257840c2805e380fc94544a, type: 3}
+--- !u!114 &1022053480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488704983631748613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bbdef86092091409a3f936b316422f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 475358865}
+  duration: 6
+  waitTimer: 1
+  activeObject: {fileID: 0}
+  movingPlatformType: 1
 --- !u!1 &7470474466019668903
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +252,7 @@ GameObject:
   - component: {fileID: 7484733753568029619}
   - component: {fileID: 7491919630222207639}
   - component: {fileID: 7444407140365225389}
+  - component: {fileID: 202713320}
   m_Layer: 0
   m_Name: Door_Right_001
   m_TagString: Untagged
@@ -308,6 +336,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300082, guid: fe8bb5221257840c2805e380fc94544a, type: 3}
+--- !u!114 &202713320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470474466019668903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38bbdef86092091409a3f936b316422f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 260873588}
+  duration: 6
+  waitTimer: 1
+  activeObject: {fileID: 0}
+  movingPlatformType: 1
 --- !u!1 &8739641324796184917
 GameObject:
   m_ObjectHideFlags: 0
