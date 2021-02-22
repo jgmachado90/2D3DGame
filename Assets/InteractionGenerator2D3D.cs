@@ -14,6 +14,8 @@ public class InteractionGenerator2D3D : MonoBehaviour
     //Cube vertex projection list
     public List<Vector3> pointsOnWall = new List<Vector3>();
 
+    public Transform Real2DBackground;
+
     IList<Point> pointsHulled;
 
 
@@ -30,10 +32,25 @@ public class InteractionGenerator2D3D : MonoBehaviour
         CreateCollider();
     }
 
-    // Update is called once per frame
-    void Update()
+
+  /*  private void FixedUpdate()
     {
-        
+        UpdatePolygonCollider2D();
+    }*/
+
+    public void UpdatePolygonCollider2D()
+    {
+        //Debug.Log("Updating polygon collider");
+        points.Clear();
+        pointsOnWall.Clear();
+       // Destroy(wall.GetComponent<PolygonCollider2D>());
+       // Destroy(Real2DBackground.GetComponent<PolygonCollider2D>());
+        FindObjectVertexPositions();
+        RayCastToWall();
+        List<Point> WallPoints = ConvertToPoint(pointsOnWall);
+        pointsHulled = Hull.MakeHull(WallPoints);
+        ShowHulledPoints(pointsHulled);
+        CreateCollider();
     }
 
     private void FindObjectVertexPositions()
@@ -62,8 +79,8 @@ public class InteractionGenerator2D3D : MonoBehaviour
                 pointsOnWall.Add(hit.point);
                 //Instantiate(cube, hit.point, Quaternion.identity, null);
             }
-            else
-                print("Raycast não colidiu com nada");
+            else { }
+                //print("Raycast não colidiu com nada");
         }
     }
 
@@ -95,10 +112,7 @@ public class InteractionGenerator2D3D : MonoBehaviour
         {
             Vector3 newPoint = wall.transform.InverseTransformPoint(new Vector3((float)p.x, (float)p.y, wall.transform.position.z - 0.1f));
             pointsToCollider.Add(newPoint);
-            /*Vector3 newPointWithZ = wall.transform.InverseTransformPoint(new Vector3((float)p.x + 0.01f, (float)p.y + 0.01f, wall.transform.position.z + 0.1f));
-            pointsToCollider.Add(newPointWithZ);*/
         }
-
 
         Triangulator tr = new Triangulator(pointsToCollider.ToArray());
         int[] indices = tr.Triangulate();
@@ -112,32 +126,59 @@ public class InteractionGenerator2D3D : MonoBehaviour
             i++;
         }
 
-        // Create the mesh
-        /*Mesh mesh = new Mesh();
-        mesh.SetVertices(pointsToCollider);
-        mesh.triangles = indices;
-        mesh.RecalculateNormals();
-        mesh.RecalculateBounds();*/
-
-        // Create the mesh
-        PolygonCollider2D polygonCollider = wall.AddComponent<PolygonCollider2D>();
-
-        //polygonCollider.pathCount = pointsToCollider2D.Count;
-        //polygonCollider.SetPath(pointsToCollider2D.Count, pointsToCollider2D);
-
+        // Create PolygonCollider2D
+        /*PolygonCollider2D polygonCollider = wall.AddComponent<PolygonCollider2D>();
         polygonCollider.points = pointsToCollider2D;
+        */
+
+        //FOR TEEST ONLY
+        if (wall.gameObject.GetComponent<PolygonCollider2D>() == null)
+            wall.gameObject.AddComponent<PolygonCollider2D>().points = pointsToCollider2D;
+
+        else
+            wall.gameObject.GetComponent<PolygonCollider2D>().points = pointsToCollider2D;
 
 
-        /*PolygonCollider2D mesh = new PolygonCollider2D();
-        mesh.SetVertices(pointsToCollider);
-        mesh.triangles = indices;
-        mesh.RecalculateNormals();
-        mesh.RecalculateBounds();*/
+        if (Real2DBackground.gameObject.GetComponent<PolygonCollider2D>() == null)
+            Real2DBackground.gameObject.AddComponent<PolygonCollider2D>().points = pointsToCollider2D;
+        
+        else
+            Real2DBackground.gameObject.GetComponent<PolygonCollider2D>().points = pointsToCollider2D;
+
+        //Create the mesh
+        Mesh msh = new Mesh();
+        msh.vertices = pointsToCollider.ToArray();
+        msh.triangles = indices;
+        msh.RecalculateNormals();
+        msh.RecalculateBounds();
+
+        if(Real2DBackground.childCount > 0)
+        {
+            foreach(Transform Child in Real2DBackground)
+            {
+                Destroy(Child.gameObject);
+            }
+        }
+
+        // Set up game object with mesh;
+        GameObject objectMesh = new GameObject();
+        objectMesh.transform.parent = Real2DBackground.transform;
+        //objectMesh.transform.position = new Vector3(wall.transform.position.x, wall.transform.position.y, wall.transform.position.z);
+        objectMesh.transform.position = Real2DBackground.gameObject.GetComponent<PolygonCollider2D>().bounds.center;
 
 
-        //MeshCollider wallMeshCollider = wall.AddComponent<MeshCollider>();
-        // wallMeshCollider.sharedMesh = mesh;
-        //wallMeshCollider.convex = true;
+        objectMesh.transform.localScale = new Vector3(1, 1, 1);
+        objectMesh.gameObject.AddComponent(typeof(MeshRenderer));
+        MeshFilter filter = objectMesh.AddComponent(typeof(MeshFilter)) as MeshFilter;
+        filter.mesh = msh;
+
+        float difX = objectMesh.transform.position.x - objectMesh.GetComponent<Renderer>().bounds.center.x;
+        float difY = objectMesh.transform.position.y - objectMesh.GetComponent<Renderer>().bounds.center.y;
+        float difZ = objectMesh.transform.position.z - objectMesh.GetComponent<Renderer>().bounds.center.z;
+
+        objectMesh.transform.position = new Vector3(objectMesh.transform.position.x + difX, objectMesh.transform.position.y + difY, objectMesh.transform.position.z + difZ - 0.8f);
+
+
     }
 
 
