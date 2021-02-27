@@ -11,16 +11,20 @@ public class TurnOnAndOff : MonoBehaviour
     public bool changingScale;
     public float t = 0;
 
+    public Transform fakeCamera;
+
 
     public void TurnOn()
     {
-        
+        Debug.Log("turnOn" + gameObject);
+        fakeCamera.gameObject.SetActive(true);
         changingScale = true;
         currentScaleTarget = onScreenScaleY;
         t = 0;
     }
     public void TurnOff()
     {
+        fakeCamera.gameObject.SetActive(false);
         changingScale = true;
         currentScaleTarget = offScreenScaleY;
         t = 0;

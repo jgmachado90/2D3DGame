@@ -258,6 +258,7 @@ MonoBehaviour:
   wall: {fileID: 8314475813674715630}
   points: []
   pointsOnWall: []
+  Real2DBackground: {fileID: 0}
 --- !u!1 &5115106079466010531
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,3 +613,4 @@ MonoBehaviour:
   speed: 4
   changingScale: 0
   t: 0
+  fakeCamera: {fileID: 4706853728031819344}

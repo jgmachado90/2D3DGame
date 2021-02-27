@@ -18,11 +18,12 @@ public class Scene2DManager : MonoBehaviour
     {
         instance = this;
         currentSceneActive.myScreen3D.GetComponent<TurnOnAndOff>().TurnOn();
-      
+
     }
 
     public void ChangeScene(int direction)
     {
+        Debug.Log("change scene");
         if (direction > 0)
         {
             foreach (Transform child in currentSceneActive.transform)
@@ -49,11 +50,14 @@ public class Scene2DManager : MonoBehaviour
 
     private void ExchangeScenes(Transform child)
     {
+        Debug.Log("exchange scenes");
+        Debug.Log("child.GetComponent<Screen2DJoin>().currentJoinScreen" + child.GetComponent<Screen2DJoin>().currentJoinScreen);
         if (child.GetComponent<Screen2DJoin>().currentJoinScreen != null)
         {
             DisableCurrentScene();
             currentSceneActive = child.GetComponentInChildren<Screen2DJoin>().currentJoinScreen.GetComponentInParent<Screen2D>();
             EnableCurrentScene();
+  
         }
     }
 

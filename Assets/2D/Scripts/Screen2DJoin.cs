@@ -8,6 +8,12 @@ public class Screen2DJoin : MonoBehaviour
 
     public Transform currentJoinScreen;
 
+    private void Start()
+    {
+        if (naturalJoinScreen != null)
+            currentJoinScreen = naturalJoinScreen;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "ScreenJoin")

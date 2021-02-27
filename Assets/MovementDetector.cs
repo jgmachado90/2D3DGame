@@ -11,12 +11,13 @@ public class MovementDetector : MonoBehaviour
 
     public InteractionGenerator2D3D[] fakeCamerasList;
 
+
     // Start is called before the first frame update
     void Start()
     {
         lastPosition = transform.position;
         lastRotation = transform.rotation;
-        fakeCamerasList = FindObjectsOfType<InteractionGenerator2D3D>();
+        //fakeCamerasList = FindObjectsOfType<InteractionGenerator2D3D>();
     }
 
     // Update is called once per frame
@@ -30,13 +31,15 @@ public class MovementDetector : MonoBehaviour
             lastRotation = transform.rotation;
             SendMessageToUpdateFakeCameraInteractionGenerators();
         }
+
     }
 
     private void SendMessageToUpdateFakeCameraInteractionGenerators()
     {
         foreach (InteractionGenerator2D3D fakeCam in fakeCamerasList)
         {
-            fakeCam.UpdatePolygonCollider2D();
+            if(fakeCam.gameObject.activeSelf)
+                fakeCam.UpdatePolygonCollider2D();
         }
     }
 }
